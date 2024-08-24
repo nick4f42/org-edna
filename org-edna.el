@@ -1769,7 +1769,7 @@ ARGS is a list of arguments; currently, only the first is used."
       (let* ((case-fold-search t)
              (parsed-time (org-read-date-analyze arg this-time '(nil nil nil nil nil nil)))
              (have-time (nth 2 parsed-time))
-             (final-time (apply #'encode-time (mapcar (lambda (e) (or e 0)) parsed-time)))
+             (final-time (encode-time parsed-time))
              (new-ts (format-time-string (if have-time "%F %R" "%F") final-time)))
         (org--deadline-or-schedule nil type new-ts))))))
 
